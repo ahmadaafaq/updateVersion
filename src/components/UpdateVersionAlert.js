@@ -1,7 +1,7 @@
 import {Alert} from 'react-native';
 import {appConfig} from '../config/config';
 
-const UpdateVersionAlert = ({force}) => {
+const UpdateVersionAlert = force => {
   const messagesArr = [];
   const update = {
     text: 'Update',

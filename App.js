@@ -25,13 +25,11 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import {semverCompare} from './src/utils/utility';
 import UpdateVersionAlert from './src/components/UpdateVersionAlert';
+import {appConfig} from './src/config/config';
 
 const App: () => React$Node = () => {
   if (semverCompare()) {
-    const updateVer = {
-      force: true,
-    };
-    UpdateVersionAlert(updateVer);
+    UpdateVersionAlert(appConfig.forceUpdate);
   }
   return (
     <>
