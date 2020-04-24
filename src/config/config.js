@@ -1,4 +1,3 @@
 export const appConfig = {
-  latest_version: '1.1',
-  forceUpdate: false,
+  baseUrl: 'http://demo8530327.mockable.io/',
 };

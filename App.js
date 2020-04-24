@@ -26,11 +26,18 @@ import {
 import {semverCompare} from './src/utils/utility';
 import UpdateVersionAlert from './src/components/UpdateVersionAlert';
 import {appConfig} from './src/config/config';
+import axios from 'axios';
 
 const App: () => React$Node = () => {
-  if (semverCompare()) {
-    UpdateVersionAlert(appConfig.forceUpdate);
-  }
+  axios
+    .get(`${appConfig.baseUrl}/get-remote-config`)
+    .then(response => {
+      const {latestVersion, forceUpdate} = response.data;
+      if (response.data && semverCompare(latestVersion)) {
+        UpdateVersionAlert(forceUpdate);
+      }
+    })
+    .catch(error => console.log(error));
   return (
     <>
       <StatusBar barStyle="dark-content" />

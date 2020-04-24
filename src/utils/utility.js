@@ -1,9 +1,8 @@
 import {getVersion} from 'react-native-device-info';
-import {appConfig} from '../config/config';
 
-export const semverCompare = () => {
+export const semverCompare = latest_version => {
   let currentVersionArr = getVersion().split('.'); //get current version of app from device
-  let latestVersionArr = appConfig.latest_version.split('.'); //get latest version of app from config
+  let latestVersionArr = latest_version.split('.'); //get latest version of app from config
   for (var i = 0; i < latestVersionArr.length; i++) {
     const a = parseInt(latestVersionArr[i], 10) || 0;
     const b = parseInt(currentVersionArr[i], 10) || 0;
